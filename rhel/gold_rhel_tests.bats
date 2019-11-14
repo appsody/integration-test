@@ -1,7 +1,10 @@
-load helper
+#!/usr/bin/env bats
+load gold_rhel_helper
+
 teardown() {
   if [[ "${#BATS_TEST_NAMES[@]}" -eq "$BATS_TEST_NUMBER" ]]; then
     rm -rf $GOPATH
+    rm $FILE
   fi
 }
 @test "good path test appsody stack validate nodejs" {
