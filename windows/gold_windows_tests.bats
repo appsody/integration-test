@@ -1,4 +1,4 @@
-load gold_mac_helper
+load gold_windows_helper
 teardown() {
   if [[ "${#BATS_TEST_NAMES[@]}" -eq "$BATS_TEST_NUMBER" ]]; then
     rm -rf $GOPATH

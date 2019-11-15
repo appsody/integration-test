@@ -21,7 +21,7 @@ else
     git clone https://github.com/appsody/appsody.git
     cd appsody
     echo "#### Building appsody binary ####"
-    make build-darwin
+    make build-windows
 fi
 
 # exports for use with the tests
@@ -29,4 +29,4 @@ export FILE
 export GOPATH=$HOME/bats_temp/temp
 export LOGDIR=$HOME/bats_temp/logs/$LINE
 export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
-export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-darwin-amd64 
+export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
