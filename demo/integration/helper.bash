@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # function to setup the test environment
 function setupenv() {
     # write the date in to the file

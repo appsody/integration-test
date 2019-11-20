@@ -1,14 +1,10 @@
 #!/bin/bash
-# if check for creating a date-stamped log directory
-# to store all log files for all the @test in the bats file
-FILE=$HOME/bats_temp/logs/datefile
-if [ -f "$FILE" ]; then
-    LINE=$(head -n 1 $FILE)
-else
+# function to setup the test environment
+function setupenv() {
     # write the date in to the file
-    LINE=$(date +%Y%m%d_%H%M%S)
-    mkdir -p $HOME/bats_temp/logs/$LINE
-    echo $LINE > $FILE
+    DATE=$(date +%Y%m%d_%H%M%S)
+    mkdir -p $HOME/bats_temp/logs/$DATE
+    echo $DATE > $DATEFILE
 
     # clone the stacks and appsody repos
     # build the appsody binary
@@ -21,12 +17,31 @@ else
     git clone https://github.com/appsody/appsody.git
     cd appsody
     echo "#### Building appsody binary ####"
-    make build-linux    
+    make build-linux
+}
+
+# variables for the log datafile and the temp setup directory
+DATEFILE=$HOME/bats_temp/logs/datefile
+SETUPDIR=$HOME/bats_temp/temp/
+
+# if check for the log datefile
+# if the file exists set the date to the first line of the file
+# else run setupenv
+if [ -f "$DATEFILE" ]; then
+    DATE=$(head -n 1 $DATEFILE)
+else
+    setupenv
+fi
+
+# if check for setup directory
+# if is doesn't exist run setupenv
+if [ ! -d "$SETUPDIR" ]; then
+    setupenv
 fi
 
 # exports for use with the tests
-export FILE
+export DATEFILE
 export GOPATH=$HOME/bats_temp/temp
-export LOGDIR=$HOME/bats_temp/logs/$LINE
+export LOGDIR=$HOME/bats_temp/logs/$DATE
 export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
 export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
