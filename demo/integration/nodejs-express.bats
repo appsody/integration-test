@@ -30,5 +30,5 @@ teardown() {
   run $APPSODY stop
   #echo "${output}"
   echo "${output}" > $LOGDIR/bad-path-appsody-stop-nodejs-express.log
-  [ "$status" -eq 0 ]  
+  [ "$status" -eq 1 ]  
 }

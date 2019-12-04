@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 @test "test appsody list" {
-  run gtimeout 1 appsody list
+  run timeout 5 appsody list
   echo "${output}"
   [ "$status" -eq 0 ]
 }

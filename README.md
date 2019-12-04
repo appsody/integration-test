@@ -6,6 +6,10 @@
     - `brew install go`
 1. install bats:
     - `brew install bats-core`
+1. install util-linux to get setpid
+    - `brew install util-linux`
+    - `echo 'export PATH="/usr/local/opt/util-linux/bin:$PATH"' >> ~/.bash_profile`
+    - `echo 'export PATH="/usr/local/opt/util-linux/sbin:$PATH"' >> ~/.bash_profile`
 #### RHEL
 1. install go:
     - https://golang.org/doc/install

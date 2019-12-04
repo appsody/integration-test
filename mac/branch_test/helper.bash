@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # function to setup the test environment
 function setupenv() {
     # write the date in to the file
@@ -12,14 +11,16 @@ function setupenv() {
     mkdir -p $HOME/bats_temp/temp/src/github.com/appsody
     export GOPATH=$HOME/bats_temp/temp
     cd $HOME/bats_temp/temp/src/github.com/appsody
-    #echo "#### Cloning stacks repo ####" > /dev/null
-    git clone --quiet https://github.com/appsody/stacks.git > /dev/null
+    #echo "#### Cloning stacks repo ####"
+    git clone --quiet https://github.com/appsody/stacks.git
     cd stacks
     git rev-parse HEAD > $HOME/bats_temp/logs/$DATE/git-commit-hash-stacks.log
-    #echo "#### Cloning appsody repo ####"
     cd - > /dev/null
-    git clone --quiet https://github.com/appsody/appsody.git > /dev/null
+    #echo "#### Cloning appsody repo ####"
+    # git clone --quiet https://github.com/appsody/appsody.git
+    git clone --quiet https://github.com/skoh7645/appsody.git
     cd appsody
+    git checkout fix719  > /dev/null
     git rev-parse HEAD > $HOME/bats_temp/logs/$DATE/git-commit-hash-appsody.log
     #echo "#### Building appsody binary ####"
     make build-darwin > /dev/null
