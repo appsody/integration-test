@@ -5,25 +5,6 @@ function setupenv() {
     DATE=$(date +%Y%m%d_%H%M%S)
     mkdir -p $HOME/bats_temp/logs/$DATE
     echo $DATE > $DATEFILE
-
-    # clone the stacks and appsody repos
-    # build the appsody binary
-    mkdir -p $HOME/bats_temp/temp/src/github.com/appsody
-    export GOPATH=$HOME/bats_temp/temp
-    cd $HOME/bats_temp/temp/src/github.com/appsody
-    #echo "#### Cloning stacks repo ####"
-    git clone --quiet https://github.com/appsody/stacks.git
-    cd stacks
-    git rev-parse HEAD > $HOME/bats_temp/logs/$DATE/git-commit-hash-stacks.log
-    cd - > /dev/null
-    #echo "#### Cloning appsody repo ####"
-    # git clone --quiet https://github.com/appsody/appsody.git
-    git clone --quiet https://github.com/skoh7645/appsody.git
-    cd appsody
-    git checkout fix719
-    git rev-parse HEAD > $HOME/bats_temp/logs/$DATE/git-commit-hash-appsody.log
-    #echo "#### Building appsody binary ####"
-    make build-darwin > /dev/null
 }
 
 # variables for the log datafile and the temp setup directory

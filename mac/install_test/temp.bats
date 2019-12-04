@@ -5,6 +5,12 @@ teardown() {
   fi
 }
 # nodejs
+@test "integration-good-path-appsody-stack-validate-nodejs" {
+  cd $TEMPDIR/stacks/incubator/nodejs-express
+  run timeout 1h appsody stack validate
+  echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-nodejs.log
+  [ "$status" -eq 0 ]
+}
 @test "integration-good-path-appsody-init-nodejs" {
   # init
   mkdir -p $TEMPDIR/nodejs
@@ -55,7 +61,7 @@ teardown() {
   echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-nodejs.log
   [ "$status" -eq 0 ]  
 }
-# nodejs
+# nodejs-express
 @test "integration-good-path-appsody-stack-validate-nodejs-express" {
   cd $TEMPDIR/stacks/incubator/nodejs-express
   run timeout 1h appsody stack validate

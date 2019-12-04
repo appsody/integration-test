@@ -8,9 +8,6 @@ teardown() {
 }
 
 @test "good path test appsody run nodejs" {
-    # WARNING: this test is not returning pass/fail status due 
-    # to the "&" in "appsody run &" so any test after this 
-    # test will not be run
 
     # init
     mkdir -p $TEMPDIR/nodejs
