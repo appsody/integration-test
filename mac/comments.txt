@@ -1,1 +1,0 @@
-1. appsody stack validate doesn't return a 1 if any of the tests fail

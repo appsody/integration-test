@@ -1,6 +1,0 @@
-MAC:
-brew install bats
-
-RHEL:
-- install go
-
