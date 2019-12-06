@@ -54,7 +54,7 @@ teardown() {
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-nodejs.log
     [ "$status" -eq 0 ]  
 }
-@test "integration-good-path-appsody-deploy-delete-nodejs" {
+@test "integration-good-path-appsody-deploy-delete-nodejs" 
     # deploy delete
     cd $TEMPDIR/nodejs
     run timeout 1h $APPSODY deploy delete -v
