@@ -54,3 +54,10 @@ export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
 export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
 # export APPSODY=appsody
+export TAG=test/test:v1
+export PULLURL=image-registry.openshift-image-registry.svc:5000
+export PUSHURL=default-route-openshift-image-registry.apps-crc.testing
+export NAMESPACE=test
+# for openshift tests you need to log into oc and docker...
+# oc login -u developer -p developer https://api.crc.testing:6443
+# docker login -u $(oc whoami) -p $(oc whoami -t) https://default-route-openshift-image-registry.apps-crc.testing
