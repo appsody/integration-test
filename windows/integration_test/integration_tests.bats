@@ -54,7 +54,7 @@ teardown() {
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-nodejs.log
     [ "$status" -eq 0 ]  
 }
-@test "integration-good-path-appsody-deploy-delete-nodejs" 
+@test "integration-good-path-appsody-deploy-delete-nodejs" {
     # deploy delete
     cd $TEMPDIR/nodejs
     run timeout 1h $APPSODY deploy delete -v
@@ -62,6 +62,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-nodejs" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/nodejs
@@ -73,6 +74,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-nodejs-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-nodejs" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -148,6 +150,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-nodejs-express" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/nodejs-express
@@ -159,6 +162,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-nodejs-express-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-nodejs-express" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -234,6 +238,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-nodejs-loopback" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/nodejs-loopback
@@ -245,6 +250,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-nodejs-loopback-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-nodejs-loopback" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -320,6 +326,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-java-microprofile" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/java-microprofile
@@ -331,6 +338,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-java-microprofile-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-java-microprofile" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -406,6 +414,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-java-spring-boot2" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/java-spring-boot2
@@ -417,6 +426,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-java-spring-boot2-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-java-spring-boot2" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -492,6 +502,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-kitura" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/kitura
@@ -503,6 +514,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-kitura-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-kitura" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -578,6 +590,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-swift" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/swift
@@ -589,6 +602,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-swift-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-swift" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -664,6 +678,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-python-flask" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/python-flask
@@ -675,6 +690,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-python-flask-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-python-flask" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -750,6 +766,7 @@ teardown() {
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-run2-starter" {
+    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/starter
@@ -761,6 +778,7 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-starter-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-starter" {
+    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
