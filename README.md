@@ -6,18 +6,20 @@
     - `brew install go`
 1. install bats:
     - `brew install bats-core`
-1. install util-linux to get setpid
+1. install util-linux to get `setpid` command
     - `brew install util-linux`
     - `echo 'export PATH="/usr/local/opt/util-linux/bin:$PATH"' >> ~/.bash_profile`
     - `echo 'export PATH="/usr/local/opt/util-linux/sbin:$PATH"' >> ~/.bash_profile`
+1. install coreutils to get `timeout` command
+    - `brew install coreutils`
 #### RHEL
 1. install go:
     - https://golang.org/doc/install
     - download the tarball
     - `sudo tar -C /usr/local -xzf go1.13.4.linux-amd64.tar.gz`
-    - `export PATH=$PATH:/usr/local/go/bin`
-    - add this to the bottom of /etc/profile: `sudo vi /etc/profile`
-    - reboot
+    -  add this to the bottom of /etc/profile: `sudo vi /etc/profile`
+        - `export PATH=$PATH:/usr/local/go/bin`
+    - log out/in
 1. install bats:
     - see: https://github.com/bats-core/bats-core
     - `git clone https://github.com/bats-core/bats-core.git`
@@ -32,7 +34,8 @@
     - see: https://github.com/bats-core/bats-core
     - `git clone https://github.com/bats-core/bats-core.git`
     - `cd bats-core`
-    - `sudo ./install.sh /usr/local`
+    - `sudo ./install.sh $HOME`
+    
 #### Windows
 1. install go
 1. install make

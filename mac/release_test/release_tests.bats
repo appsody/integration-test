@@ -83,6 +83,85 @@ teardown() {
     run appsody ps
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 }
+# node-red
+@test "integration-good-path-appsody-init-node-red" {
+    # init
+    mkdir -p $TEMPDIR/node-red
+    cd $TEMPDIR/node-red
+    run timeout 1h appsody init -v dev.local/node-red
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-init-node-red.log
+    [ "$status" -eq 0 ]
+}
+@test "integration-good-path-appsody-run-node-red" {
+    # run
+    cd $TEMPDIR/node-red
+    run timeout 1h appsody run -v &
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+}
+@test "integration-good-path-appsody-stop-node-red" {
+    # stop
+
+    # sleep to let the container come up then capture the container id
+    sleep 300
+    CONTAINER=$(appsody ps | awk 'NR==2{print $2}')
+    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run-node-red-ps-before-stop.log
+
+    # stop the container
+    run timeout 1m appsody stop -v --name $CONTAINER
+    echo "${output}"
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-stop-node-red.log
+    [ "$status" -eq 0 ]
+
+    # verify no running containers
+    CONTAINER2=$(appsody ps | awk 'NR==2{print $1}')
+    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run-node-red-ps-after-kill.log
+    run timeout 1m appsody ps
+    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
+
+}
+@test "integration-good-path-appsody-deploy-node-red" {
+    # deploy
+    cd $TEMPDIR/node-red
+    run timeout 1h appsody deploy -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-node-red.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-deploy-delete-node-red" {
+    # deploy delete
+    cd $TEMPDIR/node-red
+    run timeout 1h appsody deploy delete -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-node-red.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-run2-node-red" {
+    # run
+    # not able to log output from "appsody run &" due to the "&"
+    cd $TEMPDIR/node-red
+    setsid appsody run -v &> $LOGDIR/integration-good-path-appsody-run2-node-red.log &
+
+    # sleep to let the container come up then capture the container id
+    sleep 300
+    CONTAINER=$(appsody ps | awk 'NR==2{print $1}')
+    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-node-red-ps-before-kill.log
+}
+@test "integration-good-path-appsody-ctrl-c-node-red" {
+    # stop the running container
+    # kill -2 to the groupid simulates a "CTRL-C"
+    # need the [a]ppsody.* run to be sure we get the correct appsody binary
+    PID=$(ps xao pgid,command | grep '[a]ppsody.* run' | awk '{print $1}')
+    echo $PID > $LOGDIR/integration-good-path-appsody-run2-node-red-PID.log
+    kill -2 -$PID   
+
+    # sleep to let the stop process complete
+    sleep 11    
+
+    # verify there are no running containers
+    # nothing should be logged if there are no running containers
+    CONTAINER2=$(appsody ps | awk 'NR==2{print $1}')
+    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run2-node-red-ps-after-kill.log
+    run appsody ps
+    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
+}
 # nodejs-express
 @test "integration-good-path-appsody-init-nodejs-express" {
     # init
