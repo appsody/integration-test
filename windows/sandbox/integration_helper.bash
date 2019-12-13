@@ -22,8 +22,8 @@ function setupenv() {
     git rev-parse HEAD > $HOME/bats_temp/logs/$DATE/git-commit-hash-appsody.log
     #echo "#### Building appsody binary ####"
     # make build-darwin > /dev/null
-    make build-linux > /dev/null
-    # make build-windows
+    # make build-linux > /dev/null
+    make build-windows > /dev/null
 }
 
 # variables for the log datafile and the temp setup directory
@@ -51,13 +51,6 @@ export GOPATH=$HOME/bats_temp/temp
 export LOGDIR=$HOME/bats_temp/logs/$DATE
 export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-darwin-amd64 
-export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
-# export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
+# export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
+export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
 # export APPSODY=appsody
-export TAG=test/test:v1
-export PULLURL=image-registry.openshift-image-registry.svc:5000
-export PUSHURL=default-route-openshift-image-registry.apps-crc.testing
-export NAMESPACE=test
-# for openshift tests you need to log into oc and docker...
-# oc login -u developer -p developer https://api.crc.testing:6443
-# docker login -u $(oc whoami) -p $(oc whoami -t) https://default-route-openshift-image-registry.apps-crc.testing

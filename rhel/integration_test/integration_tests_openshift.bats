@@ -47,22 +47,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-nodejs" {
+    # operator install
+    cd $TEMPDIR/nodejs
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-nodejs.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-nodejs" {
     # deploy
     cd $TEMPDIR/nodejs
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-nodejs.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-nodejs" {
     # deploy delete
     cd $TEMPDIR/nodejs
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-nodejs.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-nodejs" {
+    # operator uninstall
+    cd $TEMPDIR/nodejs
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-nodejs.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-nodejs" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/nodejs
@@ -74,7 +87,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-nodejs-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-nodejs" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -135,22 +147,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-nodejs-express" {
+    # operator install
+    cd $TEMPDIR/nodejs-express
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-nodejs-express.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-nodejs-express" {
     # deploy
     cd $TEMPDIR/nodejs-express
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-nodejs-express.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-nodejs-express" {
     # deploy delete
     cd $TEMPDIR/nodejs-express
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-nodejs-express.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-nodejs-express" {
+    # operator uninstall
+    cd $TEMPDIR/nodejs-express
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-nodejs-express.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-nodejs-express" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/nodejs-express
@@ -162,7 +187,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-nodejs-express-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-nodejs-express" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -223,22 +247,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-nodejs-loopback" {
+    # operator install
+    cd $TEMPDIR/nodejs-loopback
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-nodejs-loopback.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-nodejs-loopback" {
     # deploy
     cd $TEMPDIR/nodejs-loopback
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-nodejs-loopback.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-nodejs-loopback" {
     # deploy delete
     cd $TEMPDIR/nodejs-loopback
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-nodejs-loopback.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-nodejs-loopback" {
+    # operator uninstall
+    cd $TEMPDIR/nodejs-loopback
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-nodejs-loopback.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-nodejs-loopback" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/nodejs-loopback
@@ -250,7 +287,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-nodejs-loopback-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-nodejs-loopback" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -311,22 +347,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-java-microprofile" {
+    # operator install
+    cd $TEMPDIR/java-microprofile
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-java-microprofile.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-java-microprofile" {
     # deploy
     cd $TEMPDIR/java-microprofile
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-java-microprofile.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-java-microprofile" {
     # deploy delete
     cd $TEMPDIR/java-microprofile
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-java-microprofile.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-java-microprofile" {
+    # operator uninstall
+    cd $TEMPDIR/java-microprofile
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-java-microprofile.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-java-microprofile" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/java-microprofile
@@ -338,7 +387,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-java-microprofile-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-java-microprofile" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -399,22 +447,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-java-spring-boot2" {
+    # operator install
+    cd $TEMPDIR/java-spring-boot2
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-java-spring-boot2.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-java-spring-boot2" {
     # deploy
     cd $TEMPDIR/java-spring-boot2
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-java-spring-boot2.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-java-spring-boot2" {
     # deploy delete
     cd $TEMPDIR/java-spring-boot2
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-java-spring-boot2.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-java-spring-boot2" {
+    # operator uninstall
+    cd $TEMPDIR/java-spring-boot2
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-java-spring-boot2.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-java-spring-boot2" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/java-spring-boot2
@@ -426,7 +487,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-java-spring-boot2-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-java-spring-boot2" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -441,94 +501,6 @@ teardown() {
     # nothing should be logged if there are no running containers
     CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
     echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run2-java-spring-boot2-ps-after-kill.log
-    run $APPSODY ps
-    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
-}
-# kitura
-@test "integration-good-path-appsody-stack-validate-kitura" {
-    # validate
-    cd $TEMPDIR/stacks/incubator/kitura
-    run timeout 1h $APPSODY stack validate
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-kitura.log
-    [ "$status" -eq 0 ]
-}
-@test "integration-good-path-appsody-init-kitura" {
-    # init
-    mkdir -p $TEMPDIR/kitura
-    cd $TEMPDIR/kitura
-    run timeout 1h $APPSODY init -v dev.local/kitura
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-init-kitura.log
-    [ "$status" -eq 0 ]
-}
-@test "integration-good-path-appsody-run-kitura" {
-    # run
-    cd $TEMPDIR/kitura
-    run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
-}
-@test "integration-good-path-appsody-stop-kitura" {
-    # stop
-
-    # sleep to let the container come up then capture the container id
-    sleep 300
-    CONTAINER=$($APPSODY ps | awk 'NR==2{print $2}')
-    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run-kitura-ps-before-stop.log
-
-    # stop the container
-    run timeout 1m $APPSODY stop -v --name $CONTAINER
-    echo "${output}"
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-stop-kitura.log
-    [ "$status" -eq 0 ]
-
-    # verify no running containers
-    CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
-    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run-kitura-ps-after-kill.log
-    run timeout 1m $APPSODY ps
-    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
-
-}
-@test "integration-good-path-appsody-deploy-kitura" {
-    # deploy
-    cd $TEMPDIR/kitura
-    run timeout 1h $APPSODY deploy -v
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-kitura.log
-    [ "$status" -eq 0 ]  
-}
-@test "integration-good-path-appsody-deploy-delete-kitura" {
-    # deploy delete
-    cd $TEMPDIR/kitura
-    run timeout 1h $APPSODY deploy delete -v
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-kitura.log
-    [ "$status" -eq 0 ]  
-}
-@test "integration-good-path-appsody-run2-kitura" {
-    skip
-    # run
-    # not able to log output from "appsody run &" due to the "&"
-    cd $TEMPDIR/kitura
-    setsid $APPSODY run -v &> $LOGDIR/integration-good-path-appsody-run2-kitura.log &
-
-    # sleep to let the container come up then capture the container id
-    sleep 300
-    CONTAINER=$($APPSODY ps | awk 'NR==2{print $1}')
-    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-kitura-ps-before-kill.log
-}
-@test "integration-good-path-appsody-ctrl-c-kitura" {
-    skip
-    # stop the running container
-    # kill -2 to the groupid simulates a "CTRL-C"
-    # need the [a]ppsody.* run to be sure we get the correct appsody binary
-    PID=$(ps xao pgid,command | grep '[a]ppsody.* run' | awk '{print $1}')
-    echo $PID > $LOGDIR/integration-good-path-appsody-run2-kitura-PID.log
-    kill -2 -$PID   
-
-    # sleep to let the stop process complete
-    sleep 11    
-
-    # verify there are no running containers
-    # nothing should be logged if there are no running containers
-    CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
-    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run2-kitura-ps-after-kill.log
     run $APPSODY ps
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 }
@@ -575,22 +547,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-swift" {
+    # operator install
+    cd $TEMPDIR/swift
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-swift.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-swift" {
     # deploy
     cd $TEMPDIR/swift
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-swift.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-swift" {
     # deploy delete
     cd $TEMPDIR/swift
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-swift.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-swift" {
+    # operator uninstall
+    cd $TEMPDIR/swift
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-swift.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-swift" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/swift
@@ -602,7 +587,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-swift-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-swift" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -617,6 +601,106 @@ teardown() {
     # nothing should be logged if there are no running containers
     CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
     echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run2-swift-ps-after-kill.log
+    run $APPSODY ps
+    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
+}
+# kitura
+@test "integration-good-path-appsody-stack-validate-kitura" {
+    # validate
+    cd $TEMPDIR/stacks/incubator/kitura
+    run timeout 1h $APPSODY stack validate
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-kitura.log
+    [ "$status" -eq 0 ]
+}
+@test "integration-good-path-appsody-init-kitura" {
+    # init
+    mkdir -p $TEMPDIR/kitura
+    cd $TEMPDIR/kitura
+    run timeout 1h $APPSODY init -v dev.local/kitura
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-init-kitura.log
+    [ "$status" -eq 0 ]
+}
+@test "integration-good-path-appsody-run-kitura" {
+    # run
+    cd $TEMPDIR/kitura
+    run timeout 1h $APPSODY run -v &
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+}
+@test "integration-good-path-appsody-stop-kitura" {
+    # stop
+
+    # sleep to let the container come up then capture the container id
+    sleep 300
+    CONTAINER=$($APPSODY ps | awk 'NR==2{print $2}')
+    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run-kitura-ps-before-stop.log
+
+    # stop the container
+    run timeout 1m $APPSODY stop -v --name $CONTAINER
+    echo "${output}"
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-stop-kitura.log
+    [ "$status" -eq 0 ]
+
+    # verify no running containers
+    CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
+    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run-kitura-ps-after-kill.log
+    run timeout 1m $APPSODY ps
+    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
+
+}
+@test "integration-good-path-appsody-operator-install-kitura" {
+    # operator install
+    cd $TEMPDIR/kitura
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-kitura.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-deploy-kitura" {
+    # deploy
+    cd $TEMPDIR/kitura
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-kitura.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-deploy-delete-kitura" {
+    # deploy delete
+    cd $TEMPDIR/kitura
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-kitura.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-operator-uninstall-kitura" {
+    # operator uninstall
+    cd $TEMPDIR/kitura
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-kitura.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-run2-kitura" {
+    # run
+    # not able to log output from "appsody run &" due to the "&"
+    cd $TEMPDIR/kitura
+    setsid $APPSODY run -v &> $LOGDIR/integration-good-path-appsody-run2-kitura.log &
+
+    # sleep to let the container come up then capture the container id
+    sleep 300
+    CONTAINER=$($APPSODY ps | awk 'NR==2{print $1}')
+    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-kitura-ps-before-kill.log
+}
+@test "integration-good-path-appsody-ctrl-c-kitura" {
+    # stop the running container
+    # kill -2 to the groupid simulates a "CTRL-C"
+    # need the [a]ppsody.* run to be sure we get the correct appsody binary
+    PID=$(ps xao pgid,command | grep '[a]ppsody.* run' | awk '{print $1}')
+    echo $PID > $LOGDIR/integration-good-path-appsody-run2-kitura-PID.log
+    kill -2 -$PID   
+
+    # sleep to let the stop process complete
+    sleep 11    
+
+    # verify there are no running containers
+    # nothing should be logged if there are no running containers
+    CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
+    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run2-kitura-ps-after-kill.log
     run $APPSODY ps
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 }
@@ -663,22 +747,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-python-flask" {
+    # operator install
+    cd $TEMPDIR/python-flask
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-python-flask.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-python-flask" {
     # deploy
     cd $TEMPDIR/python-flask
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-python-flask.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-python-flask" {
     # deploy delete
     cd $TEMPDIR/python-flask
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-python-flask.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-python-flask" {
+    # operator uninstall
+    cd $TEMPDIR/python-flask
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-python-flask.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-python-flask" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/python-flask
@@ -690,7 +787,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-python-flask-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-python-flask" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
@@ -751,22 +847,35 @@ teardown() {
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 
 }
+@test "integration-good-path-appsody-operator-install-starter" {
+    # operator install
+    cd $TEMPDIR/starter
+    run timeout 1h $APPSODY operator install --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-install-starter.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-deploy-starter" {
     # deploy
     cd $TEMPDIR/starter
-    run timeout 1h $APPSODY deploy -v
+    run timeout 1h $APPSODY deploy --tag $TAG --pull-url $PULLURL --push-url $PUSHURL --push --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-starter.log
     [ "$status" -eq 0 ]  
 }
 @test "integration-good-path-appsody-deploy-delete-starter" {
     # deploy delete
     cd $TEMPDIR/starter
-    run timeout 1h $APPSODY deploy delete -v
+    run timeout 1h $APPSODY deploy delete --namespace $NAMESPACE -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-starter.log
     [ "$status" -eq 0 ]  
 }
+@test "integration-good-path-appsody-operator-uninstall-starter" {
+    # operator uninstall
+    cd $TEMPDIR/starter
+    run timeout 1h $APPSODY operator uninstall --namespace $NAMESPACE -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-operator-uninstall-starter.log
+    [ "$status" -eq 0 ]  
+}
 @test "integration-good-path-appsody-run2-starter" {
-    skip
     # run
     # not able to log output from "appsody run &" due to the "&"
     cd $TEMPDIR/starter
@@ -778,7 +887,6 @@ teardown() {
     echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-starter-ps-before-kill.log
 }
 @test "integration-good-path-appsody-ctrl-c-starter" {
-    skip
     # stop the running container
     # kill -2 to the groupid simulates a "CTRL-C"
     # need the [a]ppsody.* run to be sure we get the correct appsody binary
