@@ -53,4 +53,6 @@ export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
 export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-darwin-amd64 
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
+
+# set APPSODY to appsody if testing the locally built binary (release test)
 # export APPSODY=appsody

@@ -53,7 +53,10 @@ export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-darwin-amd64 
 export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
+
+# set APPSODY to appsody if testing the locally built binary (release test)
 # export APPSODY=appsody
+
 export TAG=test/test:v1
 export PULLURL=image-registry.openshift-image-registry.svc:5000
 export PUSHURL=default-route-openshift-image-registry.apps-crc.testing
