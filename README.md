@@ -34,8 +34,8 @@
     - see: https://github.com/bats-core/bats-core
     - `git clone https://github.com/bats-core/bats-core.git`
     - `cd bats-core`
-    - `sudo ./install.sh $HOME`
-    
+    - `sudo ./install.sh /usr/local`
+
 #### Windows
 1. install go
 1. install make
