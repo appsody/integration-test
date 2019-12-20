@@ -44,7 +44,7 @@
     - see: https://github.com/bats-core/bats-core
     - `git clone https://github.com/bats-core/bats-core.git`
     - `cd bats-core`
-    - `./install.sh /usr/local`
+    - `./install.sh $HOME`
 1. run bats tests from git bash
 ### Usage
 - Syntax: `bats <.bats test>
