@@ -46,6 +46,8 @@
     - `cd bats-core`
     - `./install.sh $HOME`
 1. run bats tests from git bash
-### Usage
+### General Usage
 - Syntax: `bats <.bats test>
 - Example: `bats gold_mac_tests.bats`
+### Jenkins Usage
+See [Jenkins](https://github.com/appsody/integration-test/blob/master/docs/JENKINS.md)
