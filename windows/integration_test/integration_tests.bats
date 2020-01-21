@@ -8,7 +8,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-nodejs" {
     # validate
     cd $TEMPDIR/stacks/incubator/nodejs
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-nodejs.log
     [ "$status" -eq 0 ]
 }
@@ -96,7 +96,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-nodejs-express" {
     # validate
     cd $TEMPDIR/stacks/incubator/nodejs-express
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-nodejs-express.log
     [ "$status" -eq 0 ]
 }
@@ -184,7 +184,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-nodejs-loopback" {
     # validate
     cd $TEMPDIR/stacks/incubator/nodejs-loopback
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-nodejs-loopback.log
     [ "$status" -eq 0 ]
 }
@@ -272,7 +272,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-node-red" {
     # validate
     cd $TEMPDIR/stacks/incubator/node-red
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-node-red.log
     [ "$status" -eq 0 ]
 }
@@ -360,7 +360,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-java-microprofile" {
     # validate
     cd $TEMPDIR/stacks/incubator/java-microprofile
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-java-microprofile.log
     [ "$status" -eq 0 ]
 }
@@ -448,7 +448,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-java-spring-boot2" {
     # validate
     cd $TEMPDIR/stacks/incubator/java-spring-boot2
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-java-spring-boot2.log
     [ "$status" -eq 0 ]
 }
@@ -536,7 +536,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-kitura" {
     # validate
     cd $TEMPDIR/stacks/incubator/kitura
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-kitura.log
     [ "$status" -eq 0 ]
 }
@@ -624,7 +624,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-swift" {
     # validate
     cd $TEMPDIR/stacks/incubator/swift
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-swift.log
     [ "$status" -eq 0 ]
 }
@@ -712,7 +712,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-python-flask" {
     # validate
     cd $TEMPDIR/stacks/incubator/python-flask
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-python-flask.log
     [ "$status" -eq 0 ]
 }
@@ -800,7 +800,7 @@ teardown() {
 @test "integration-good-path-appsody-stack-validate-starter" {
     # validate
     cd $TEMPDIR/stacks/incubator/starter
-    run timeout 1h $APPSODY stack validate
+    run timeout 1h $APPSODY stack validate -v
     echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-starter.log
     [ "$status" -eq 0 ]
 }

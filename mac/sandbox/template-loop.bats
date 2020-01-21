@@ -7,12 +7,12 @@ setup() {
   git clone https://github.com/appsody/stacks.git
   
 }
-@test "test appsody stack validate" {
+@test "test appsody stack validate -v" {
   cd $TEMPDIR/stacks/incubator
   for f in *; do
     if [ -d ${f} ]; then
       cd $f
-      run appsody stack validate
+      run appsody stack validate -v
       #echo "${output}" > $LOGDIR/test-appsody-list-$f.log
       #echo "${output}"
       [ "$status" -eq 0 ]

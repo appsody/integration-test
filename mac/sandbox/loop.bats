@@ -5,7 +5,7 @@ teardown() {
   fi
 }
 
-@test "test appsody stack validate" {
+@test "test appsody stack validate -v" {
   cd $TEMPDIR/stacks/incubator
   for f in *; do
     if [ -d ${f} ]; then
