@@ -24,7 +24,7 @@ teardown() {
     # run
     cd $TEMPDIR/nodejs
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-nodejs.log 
 }
 @test "integration-good-path-appsody-stop-nodejs" {
     # stop
@@ -110,7 +110,7 @@ teardown() {
     # run
     cd $TEMPDIR/nodejs-express
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-nodejs-express.log 
 }
 @test "integration-good-path-appsody-stop-nodejs-express" {
     # stop
@@ -196,7 +196,7 @@ teardown() {
     # run
     cd $TEMPDIR/nodejs-loopback
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-nodejs-loopback.log 
 }
 @test "integration-good-path-appsody-stop-nodejs-loopback" {
     # stop
@@ -282,7 +282,7 @@ teardown() {
     # run
     cd $TEMPDIR/node-red
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-node-red.log 
 }
 @test "integration-good-path-appsody-stop-node-red" {
     # stop
@@ -368,7 +368,7 @@ teardown() {
     # run
     cd $TEMPDIR/java-microprofile
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-java-microprofile.log 
 }
 @test "integration-good-path-appsody-stop-java-microprofile" {
     # stop
@@ -454,7 +454,7 @@ teardown() {
     # run
     cd $TEMPDIR/java-spring-boot2
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-java-spring-boot2.log 
 }
 @test "integration-good-path-appsody-stop-java-spring-boot2" {
     # stop
@@ -540,7 +540,7 @@ teardown() {
     # run
     cd $TEMPDIR/kitura
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-kitura.log 
 }
 @test "integration-good-path-appsody-stop-kitura" {
     # stop
@@ -626,7 +626,7 @@ teardown() {
     # run
     cd $TEMPDIR/swift
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-swift.log 
 }
 @test "integration-good-path-appsody-stop-swift" {
     # stop
@@ -712,7 +712,7 @@ teardown() {
     # run
     cd $TEMPDIR/python-flask
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-python-flask.log 
 }
 @test "integration-good-path-appsody-stop-python-flask" {
     # stop
@@ -798,7 +798,7 @@ teardown() {
     # run
     cd $TEMPDIR/starter
     run timeout 1h $APPSODY run -v &
-    echo "${output}" > $LOGDIR/integration-good-path-appsody-run.log 
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-starter.log 
 }
 @test "integration-good-path-appsody-stop-starter" {
     # stop
