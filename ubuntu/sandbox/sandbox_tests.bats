@@ -1,4 +1,4 @@
-load integration_helper
+load sandbox_helper
 teardown() {
   if [[ "${#BATS_TEST_NAMES[@]}" -eq "$BATS_TEST_NUMBER" ]]; then
     rm -rf $GOPATH
