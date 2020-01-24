@@ -864,3 +864,89 @@ teardown() {
     run $APPSODY ps
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
 }
+# java-openliberty
+@test "integration-good-path-appsody-stack-validate-java-openliberty" {
+    # validate
+    cd $TEMPDIR/stacks/incubator/java-openliberty
+    run timeout 1h $APPSODY stack validate -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-stack-validate-java-openliberty.log
+    [ "$status" -eq 0 ]
+}
+@test "integration-good-path-appsody-init-java-openliberty" {
+    # init
+    mkdir -p $TEMPDIR/java-openliberty
+    cd $TEMPDIR/java-openliberty
+    run timeout 1h $APPSODY init -v dev.local/java-openliberty
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-init-java-openliberty.log
+    [ "$status" -eq 0 ]
+}
+@test "integration-good-path-appsody-run-java-openliberty" {
+    # run
+    cd $TEMPDIR/java-openliberty
+    run timeout 1h $APPSODY run -v &
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-run-java-openliberty.log 
+}
+@test "integration-good-path-appsody-stop-java-openliberty" {
+    # stop
+
+    # sleep to let the container come up then capture the container id
+    sleep 300
+    CONTAINER=$($APPSODY ps | awk 'NR==2{print $2}')
+    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run-java-openliberty-ps-before-stop.log
+
+    # stop the container
+    run timeout 1m $APPSODY stop -v --name $CONTAINER
+    echo "${output}"
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-stop-java-openliberty.log
+    [ "$status" -eq 0 ]
+
+    # verify no running containers
+    CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
+    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run-java-openliberty-ps-after-kill.log
+    run timeout 1m $APPSODY ps
+    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
+
+}
+@test "integration-good-path-appsody-deploy-java-openliberty" {
+    # deploy
+    cd $TEMPDIR/java-openliberty
+    run timeout 1h $APPSODY deploy -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-java-openliberty.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-deploy-delete-java-openliberty" {
+    # deploy delete
+    cd $TEMPDIR/java-openliberty
+    run timeout 1h $APPSODY deploy delete -v
+    echo "${output}" > $LOGDIR/integration-good-path-appsody-deploy-delete-java-openliberty.log
+    [ "$status" -eq 0 ]  
+}
+@test "integration-good-path-appsody-run2-java-openliberty" {
+    # run
+    # not able to log output from "appsody run &" due to the "&"
+    cd $TEMPDIR/java-openliberty
+    setsid $APPSODY run -v &> $LOGDIR/integration-good-path-appsody-run2-java-openliberty.log &
+
+    # sleep to let the container come up then capture the container id
+    sleep 300
+    CONTAINER=$($APPSODY ps | awk 'NR==2{print $1}')
+    echo $CONTAINER > $LOGDIR/integration-good-path-appsody-run2-java-openliberty-ps-before-kill.log
+}
+@test "integration-good-path-appsody-ctrl-c-java-openliberty" {
+    # stop the running container
+    # kill -2 to the groupid simulates a "CTRL-C"
+    # need the [a]ppsody.* run to be sure we get the correct appsody binary
+    PID=$(ps xao pgid,command | grep '[a]ppsody.* run' | awk '{print $1}')
+    echo $PID > $LOGDIR/integration-good-path-appsody-run2-java-openliberty-PID.log
+    kill -2 -$PID   
+
+    # sleep to let the stop process complete
+    sleep 11    
+
+    # verify there are no running containers
+    # nothing should be logged if there are no running containers
+    CONTAINER2=$($APPSODY ps | awk 'NR==2{print $1}')
+    echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run2-java-openliberty-ps-after-kill.log
+    run $APPSODY ps
+    [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
+}
