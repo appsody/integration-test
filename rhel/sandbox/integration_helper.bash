@@ -57,10 +57,10 @@ export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
 # set APPSODY to appsody if testing the locally built binary (release test)
 # export APPSODY=appsody
 
-export TAG=appsody-ubuntu/express
+export TAG=appsody-rhel/express
 export PULLURL=image-registry.openshift-image-registry.svc:5000
 export PUSHURL=default-route-openshift-image-registry.apps.appsodyopenshift42.os.fyre.ibm.com
-export NAMESPACE=appsody-ubuntu
+export NAMESPACE=appsody-rhel
 
 # for fyre openshift tests you need to log into oc and docker...
 # log into the openshift ui as kubeadmin and then in the top right corner click the kube:admin and then
