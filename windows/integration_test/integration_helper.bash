@@ -22,8 +22,8 @@ function setupenv() {
     git rev-parse HEAD > $HOME/bats_temp/logs/$DATE/git-commit-hash-appsody.log
     #echo "#### Building appsody binary ####"
     # make build-darwin > /dev/null
-    # make build-linux > /dev/null
     make build-windows > /dev/null
+    # make build-windows
 }
 
 # variables for the log datafile and the temp setup directory
@@ -51,8 +51,22 @@ export GOPATH=$HOME/bats_temp/temp
 export LOGDIR=$HOME/bats_temp/logs/$DATE
 export TEMPDIR=$HOME/bats_temp/temp/src/github.com/appsody
 # export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-darwin-amd64 
-# export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
+#export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
 export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-windows-amd64.exe
 
 # set APPSODY to appsody if testing the locally built binary (release test)
 # export APPSODY=appsody
+
+export TAG=appsody-windows/express
+export PULLURL=image-registry.openshift-image-registry.svc:5000
+export PUSHURL=default-route-openshift-image-registry.apps.appsodyopenshift42.os.fyre.ibm.com
+export NAMESPACE=appsody-windows
+
+# for fyre openshift tests you need to log into oc and docker...
+# log into the openshift ui as kubeadmin and then in the top right corner click the kube:admin and then
+# Copy Login command and then run the oc login command provided
+# docker login -u admin -p $(oc whoami -t) default-route-openshift-image-registry.apps.appsodyopenshift42.os.fyre.ibm.com
+
+# for crc openshift tests you need to log into oc and docker...
+# oc login -u developer -p developer https://api.crc.testing:6443
+# docker login -u $(oc whoami) -p $(oc whoami -t) https://default-route-openshift-image-registry.apps-crc.testing
