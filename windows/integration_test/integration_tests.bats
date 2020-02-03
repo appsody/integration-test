@@ -45,7 +45,7 @@ teardown() {
     echo $CONTAINER2 > $LOGDIR/integration-good-path-appsody-run-nodejs-ps-after-kill.log
     run timeout 1m $APPSODY ps
     [ "${lines[0]}" = "There are no stack-based containers running in your docker environment" ]
-
+}
 @test "integration-good-path-appsody-operator-install-nodejs" {
     # operator install
     cd $TEMPDIR/nodejs
