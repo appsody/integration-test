@@ -4,6 +4,7 @@
 Before running the integration tests:
 - `sudo rm -rf ~/.appsody/stacks`
 - `sudo rm -rf ~/bats_temp/temp`
+- `sudo rm -rf ~/.m2`
 - log into the openshift ui as kubeadmin and then in the top right corner click the kube:admin and then `Copy Login command` and then run the oc login command provided
 - `oc project <project name>`
 - `docker login -u admin -p $(oc whoami -t) default-route-openshift-image-registry.apps.appsodyopenshift42.os.fyre.ibm.com`
