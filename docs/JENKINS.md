@@ -1,9 +1,9 @@
 # Jenkins
 ## admin UI install and setup for macOS
 * brew install jenkins-lts
-    * Note: When using launchctl the port will be 8080.
+    * Note: When using launchctl the port will be 8080. You can launch with --httpPort=7070 to change the port
     * To have launchd start jenkins-lts now and restart at login:  brew services start jenkins-ltsOr, if you don't want/need a background service you can just run:  jenkins-lts
-* jenkins-lts -> launches jenkins and gives you the initial admin password
+* jenkins-lts -> launches jenkins and gives you the initial admin password. You can launch with --httpPort=7070 to change the port
 * localhost:8080 brings up the ui
 * selected all the ssh plugins
 * admin user:
@@ -156,4 +156,4 @@
             git clone https://github.com/appsody/integration-test.git
             bats integration-test/ubuntu/integration_test/integration_tests.bats
             ```
-    * if stuff like "make" isn't found then log into the windows node ask jenkinstest and edit the env path to include the directory where its stored (C:\ProgramData\chocolatey\bin). may need to disconnect the node and reconnect it for it to pick up the path changes
+    * if stuff like "make" isn't found then log into the windows node as jenkinstest and edit the env path to include the directory where its stored (C:\ProgramData\chocolatey\bin). may need to disconnect the node and reconnect it for it to pick up the path changes

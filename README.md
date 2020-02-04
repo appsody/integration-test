@@ -5,6 +5,7 @@ Before running the integration tests:
 - `sudo rm -rf ~/.appsody/stacks`
 - `sudo rm -rf ~/bats_temp/temp`
 - `sudo rm -rf ~/.m2`
+- `docker system prune`
 - log into the openshift ui as kubeadmin and then in the top right corner click the kube:admin and then `Copy Login command` and then run the oc login command provided
 - `oc project <project name>`
 - `docker login -u admin -p $(oc whoami -t) default-route-openshift-image-registry.apps.appsodyopenshift42.os.fyre.ibm.com`
@@ -59,3 +60,8 @@ Before running the integration tests:
 - Example: `bats gold_mac_tests.bats`
 ### Jenkins Usage
 See [Jenkins](https://github.com/appsody/integration-test/blob/master/docs/JENKINS.md)
+### Debug Tips
+1. Rerun the test locally
+1. Check repo issues for existing problems/bugs
+1. Perform the workaround steps and retry the test run
+1. Try the test on a different OS
