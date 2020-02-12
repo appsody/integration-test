@@ -42,6 +42,9 @@ Lastly, working around the BATS looping limitation was a challenge. BATS does no
 
 ## References
 [BATS](https://github.com/bats-core/bats-core)
+
 [Appsody Cloud Tool](https://appsody.dev/)
+
 [Appsody Integration Test](https://github.com/appsody/integration-test)
+
 [Jenkins](https://jenkins.io/)
