@@ -11,6 +11,7 @@ function setupenv() {
     # build the appsody binary
     mkdir -p $HOME/bats_temp/temp/src/github.com/appsody
     export GOPATH=$HOME/bats_temp/temp
+    echo "GOPATH $GOPATH"
     cd $HOME/bats_temp/temp/src/github.com/appsody
     echo "#### Cloning stacks repo ####"
     git clone --quiet https://github.com/appsody/stacks.git
