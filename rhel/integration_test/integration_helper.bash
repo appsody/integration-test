@@ -59,7 +59,7 @@ export APPSODY=$TEMPDIR/appsody/build/appsody-0.0.0-linux-amd64
 
 export TAG=appsody-rhel/express
 export PULLURL=image-registry.openshift-image-registry.svc:5000
-export PUSHURL=default-route-openshift-image-registry.apps.appsodyopenshift42.os.fyre.ibm.com
+export PUSHURL=default-route-openshift-image-registry.apps.massage.os.fyre.ibm.com
 export NAMESPACE=appsody-rhel
 
 # for fyre openshift tests you need to log into oc and docker...
